@@ -1,0 +1,31 @@
+<mxfile host="app.diagrams.net" modified="2023-06-15T09:54:50.979Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.4 Safari/605.1.15" etag="54gxAnE7dL-9tLt4g7vP" version="21.3.7" type="device">
+  <diagram name="Page-1" id="QPShLLnHyEpb9EY_enVD">
+    <mxGraphModel dx="556" dy="458" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8tnFJ9YgJVrTKbryQUMZ-1" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="70" width="190" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="8tnFJ9YgJVrTKbryQUMZ-2" value="&lt;b&gt;OpenFaaS Health&lt;/b&gt;&lt;br&gt;:8080/_/health&lt;br&gt;&lt;div style=&quot;&quot;&gt;:8080/_/ready&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="180" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8tnFJ9YgJVrTKbryQUMZ-7" value="&lt;b&gt;gFaaS Function&lt;/b&gt; " style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="115" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8tnFJ9YgJVrTKbryQUMZ-10" value="&lt;b&gt;gFaaS Core&lt;br&gt;(HTTP Server)&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="118.75" y="80" width="112.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="8tnFJ9YgJVrTKbryQUMZ-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8tnFJ9YgJVrTKbryQUMZ-11" target="8tnFJ9YgJVrTKbryQUMZ-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8tnFJ9YgJVrTKbryQUMZ-11" value="&lt;b&gt;Function&lt;/b&gt;&lt;br&gt;:8080/" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="120" width="150" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="8tnFJ9YgJVrTKbryQUMZ-13" value="&lt;b&gt;Nuclio Health&lt;/b&gt;&lt;br&gt;:8080/__internal/health&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;:8082/live&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="100" y="240" width="150" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

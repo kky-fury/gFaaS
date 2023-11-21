@@ -1,0 +1,41 @@
+- openfaas:
+    id: OpenFaaS
+    managementHost: http://10.195.7.236
+    managementPort: 31112
+    functionHost: http://10.195.7.236
+    functionPort: 31112
+    authentication:
+      type: basic-auth
+      username: admin
+      password: 1LUt02KCp9ns
+- nuclio:
+    id: Nuclio
+    managementHost: http://10.195.8.220
+    managementPort: 31112
+    functionHost: http://10.195.8.220
+    authentication:
+      type: no-auth
+- fission:
+    id: Fission
+    managementHost: http://10.195.8.201
+    managementPort: 31112
+    functionHost: http://10.195.8.201
+    functionPort: 30436
+    authentication:
+      type: no-auth
+- knative:
+    id: Knative
+    managementHost: https://10.195.8.161
+    managementPort: 6443
+    skipTLSVerify: true
+    functionHost:
+    functionPort:
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJSUzI1NiIsImtpZCI6InVOOGpkU2ktVDd4OFBXbmFXRmZjZXM1YVBuT0twZWcwSDhQNktvZUs0SXcifQ.eyJhdWQiOlsiaHR0cHM6Ly9rdWJlcm5ldGVzLmRlZmF1bHQuc3ZjLmNsdXN0ZXIubG9jYWwiXSwiZXhwIjoxNjk4ODMyNzA5LCJpYXQiOjE2NzI5MTI3MDksImlzcyI6Imh0dHBzOi8va3ViZXJuZXRlcy5kZWZhdWx0LnN2Yy5jbHVzdGVyLmxvY2FsIiwia3ViZXJuZXRlcy5pbyI6eyJuYW1lc3BhY2UiOiJrbmF0aXZlLXNlcnZpbmciLCJzZXJ2aWNlYWNjb3VudCI6eyJuYW1lIjoiY29udHJvbGxlciIsInVpZCI6ImE0MDRkNmI2LTNiOTMtNDZmNS1hNTZkLTA2OTRmZDA0N2U1MCJ9fSwibmJmIjoxNjcyOTEyNzA5LCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a25hdGl2ZS1zZXJ2aW5nOmNvbnRyb2xsZXIifQ.ekx5QpWJwZiRFO0MGVhVB7iwOWCI7LO-Yg3jVur8ovECD5i2D29u2bmMbVYdHs6GgZOoy7j6iqjllG7rzXOuLMsM3I2zF74EGV1OQtomvO-ERFgCA-BCB5mJnUdvBWZ5f9SFuIZJio6AC2aD98_R9BdjZKgFVYbiba2ep2ITb1ffSUM2raTG95OaW_5LLOMr3-J3xyJhdyQDqGqok-neYp8mpIlSwZG88f9zzIl5hs1ZTA3sjjFD82yY1_yZ6JVZgMDzXeBiTUS_jEhBk-bJA7U4HqpHclIaT4flIshtCiahkj978y_FyX-QdgXgVg59XE9hdNvIsxvFP4G0bn3ScQ
+
+
+# Nuclio: 10.195.9.154
+# OpenFaaS: 10.195.9.3
+# Knative: 10.195.6.199
+# Fission: 10.195.7.125

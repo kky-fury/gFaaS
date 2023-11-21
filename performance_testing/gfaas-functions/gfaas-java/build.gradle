@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+}
+
+group 'org.gfaas.function'
+version '0.0.1'
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs("libs")
+    }
+}
+
+dependencies {
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation name: 'gfaas-core-0.0.1'
+}
+
+task runFunction(type: JavaExec){
+    main = 'org.gfaas.core.runner.XRunner'
+    classpath = files('libs/gfaas-core-0.0.1.jar')
+    classpath = sourceSets.main.runtimeClasspath
+    args = ['--functionTarget=org.gfaas.function.Function']
+}
+
+jar {
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    manifest {
+        attributes(
+                'Main-Class': 'org.gfaas.core.runner.XRunner'
+        )
+    }
+    archiveFileName.set('function.jar')
+}
+
+

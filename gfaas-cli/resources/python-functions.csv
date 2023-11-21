@@ -1,0 +1,9 @@
+name,image,namespace,platformId,requestMemory,requestCpu,maxMemory,maxCpu,minScale,targetScale,maxScale
+gfaas-python,paulwie/gfaas-python:latest,openfaas-fn,OpenFaaS,4000M,2000m,4000M,2000m,1,1,5
+gfaas-python,paulwie/gfaas-python:latest,default,Fission,4000M,2000m,4000M,2000m,1,1,5
+gfaas-python,paulwie/gfaas-python:latest,default,Nuclio,4000M,2000m,4000M,2000m,1,1,5
+gfaas-python,paulwie/gfaas-python:latest,default,Knative,4000M,2000m,4000M,2000m,1,1,5
+openfaas-python,paulwie/openfaas-python:latest,openfaas-fn,OpenFaaS,4000M,2000m,4000M,2000m,1,1,5
+cross-python,paulwie/cross-python:latest,default,Fission,4000M,2000m,4000M,2000m,1,1,5
+cross-python,paulwie/cross-python:latest,default,Nuclio,4000M,2000m,4000M,2000m,1,1,5
+cross-python,paulwie/cross-python:latest,default,Knative,4000M,2000m,4000M,2000m,1,1,5

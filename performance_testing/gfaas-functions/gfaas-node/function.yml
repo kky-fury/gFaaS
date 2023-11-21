@@ -1,0 +1,35 @@
+name: node
+lang: node
+image: paulwie/gfaas-node:latest
+deployRegistry: registry.hub.docker.com
+namespace: default
+scale:
+    knative:
+        # https://knative.dev/docs/serving/autoscaling/
+        scaleToZeroDuration: 2m
+        min: 1
+        max: 100
+        target: 50
+    openfaas:
+    # https://docs.openfaas.com/architecture/autoscaling/
+    # To enable autoscaling, one must use the OpenFaaS pro Autoscaler (https://docs.openfaas.com/architecture/autoscaling/)
+    # min: 1 (Not available in community version)
+    # max: 100 (Not available in community version)
+    # target: 50 (Not available in community version)
+    fission:
+        # https://fission.io/docs/reference/crd-reference/
+        scaleToZeroDuration: 111
+        min: 0
+        max: 20
+    nuclio:
+        # https://nuclio.io/docs/latest/reference/function-configuration/function-configuration-reference/
+        min: 1
+        max: 1
+        target: 1
+
+# nuclio_service_type = NodePort | ClusterIP. Use ClusterIP for production.
+nuclio_service_type: NodePort
+# fission_executor_type = container | poolmgr. Currently only container is supported
+fission_executor_type: container
+# fission_http_route as fisson does not automaticalli create http trigger
+fission_http_route: /node

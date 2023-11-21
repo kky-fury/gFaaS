@@ -1,0 +1,8 @@
+openfaas-java,openfaas,java,https://10.195.8.172.sslip.io:31333/function/openfaas-java.openfaas-fn
+gfaas-java,openfaas,java,https://10.195.8.172.sslip.io:31333/function/gfaas-java.openfaas-fn
+cross-java,knative,java,http://cross-java.default.10.195.9.114.sslip.io:30014
+gfaas-java,knative,java,http://gfaas-java.default.10.195.9.114.sslip.io:30014
+cross-java,fission,java,https://10.195.7.135.sslip.io:32748/cross-java
+gfaas-java,fission,java,https://10.195.7.135.sslip.io:32748/gfaas-java
+cross-java,nuclio,java,https://10.195.9.71.sslip.io:30747/cross-java
+gfaas-java,nuclio,java,https://10.195.9.71.sslip.io:30747/gfaas-java

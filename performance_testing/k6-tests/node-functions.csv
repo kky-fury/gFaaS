@@ -1,0 +1,8 @@
+openfaas-node,openfaas,node,https://10.195.8.172.sslip.io:31333/function/openfaas-node.openfaas-fn
+gfaas-node,openfaas,node,https://10.195.8.172.sslip.io:31333/function/gfaas-node.openfaas-fn
+cross-node,knative,node,http://cross-node.default.10.195.9.114.sslip.io:30014
+gfaas-node,knative,node,http://gfaas-node.default.10.195.9.114.sslip.io:30014
+cross-node,fission,node,https://10.195.7.135.sslip.io:32748/cross-node
+gfaas-node,fission,node,https://10.195.7.135.sslip.io:32748/gfaas-node
+cross-node,nuclio,node,https://10.195.9.71.sslip.io:30747/cross-node
+gfaas-node,nuclio,node,https://10.195.9.71.sslip.io:30747/gfaas-node

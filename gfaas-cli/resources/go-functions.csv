@@ -1,0 +1,9 @@
+name,image,namespace,platformId,requestMemory,requestCpu,maxMemory,maxCpu,minScale,targetScale,maxScale
+gfaas-go,paulwie/gfaas-go:latest,openfaas-fn,OpenFaaS,4000M,2000m,4000M,2000m,1,1,5
+gfaas-go,paulwie/gfaas-go:latest,default,Fission,4000M,2000m,4000M,2000m,1,1,5
+gfaas-go,paulwie/gfaas-go:latest,default,Nuclio,4000M,2000m,4000M,2000m,1,1,5
+gfaas-go,paulwie/gfaas-go:latest,default,Knative,4000M,2000m,4000M,2000m,1,1,5
+openfaas-go,paulwie/openfaas-go:latest,openfaas-fn,OpenFaaS,4000M,6000m,4000M,6000m,1,1,5
+cross-go,paulwie/cross-go:latest,default,Fission,4000M,2000m,4000M,2000m,1,1,5
+cross-go,paulwie/cross-go:latest,default,Nuclio,4000M,2000m,4000M,2000m,1,1,5
+cross-go,paulwie/cross-go:latest,default,Knative,4000M,2000m,4000M,2000m,1,1,5

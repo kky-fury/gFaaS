@@ -1,0 +1,9 @@
+name,image,namespace,platformId,requestMemory,requestCpu,maxMemory,maxCpu,minScale,targetScale,maxScale
+gfaas-java,paulwie/gfaas-java:latest,openfaas-fn,OpenFaaS,4000M,2000m,4000M,2000m,1,1,5
+gfaas-java,paulwie/gfaas-java:latest,default,Fission,4000M,2000m,4000M,2000m,1,1,5
+gfaas-java,paulwie/gfaas-java:latest,default,Nuclio,4000M,2000m,4000M,2000m,1,1,5
+gfaas-java,paulwie/gfaas-java:latest,default,Knative,4000M,2000m,4000M,2000m,1,1,5
+openfaas-java,paulwie/openfaas-java:latest,openfaas-fn,OpenFaaS,4000M,2000m,4000M,2000m,1,1,5
+cross-java,paulwie/cross-java:latest,default,Fission,4000M,2000m,4000M,2000m,1,1,5
+cross-java,paulwie/cross-java:latest,default,Nuclio,4000M,2000m,4000M,2000m,1,1,5
+cross-java,paulwie/cross-java:latest,default,Knative,4000M,2000m,4000M,2000m,1,1,5

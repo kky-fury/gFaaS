@@ -1,0 +1,59 @@
+{
+  "name": "gfaas",
+  "version": "1.1.17",
+  "description": "",
+  "main": "./lib/index.js",
+  "bin": {
+    "gfaas": "./lib/index.js"
+  },
+  "engines": {
+    "npm": ">=7.0.0 <9.0.0",
+    "node": ">=16.0.0 <17.0.0"
+  },
+  "rootDir": "src",
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "testMe": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/test/test.ts",
+    "start:windows": "nodemon --watch 'src/**/*.ts' --exec \"npx ts-node\" src/index.ts",
+    "create": "npm run build && npm run test",
+    "build": "tsc -p .",
+    "local": "sudo npm i -g && gfaas",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Paul Wieland",
+  "license": "ISC",
+  "dependencies": {
+    "@kubernetes/client-node": "0.16.3",
+    "axios": "^1.1.3",
+    "chalk": "^4.1.2",
+    "clear": "^0.1.0",
+    "cli-color": "^2.0.3",
+    "commander": "^9.4.1",
+    "console-table-printer": "^2.11.1",
+    "csv-parse": "^5.4.0",
+    "curlrequest": "^1.0.1",
+    "dockerode": "3.3.5",
+    "extract-zip": "^2.0.1",
+    "figlet": "^1.5.2",
+    "fs-extra": "^10.1.0",
+    "loading-cli": "^1.1.0",
+    "node-fetch": "^3.2.10",
+    "openai": "^3.2.1",
+    "path": "^0.12.7",
+    "pkg": "^5.8.0",
+    "readline-sync": "^1.4.10",
+    "tar": "^6.1.13",
+    "yaml": "^2.1.3"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/node": "^18.11.9",
+    "nodemon": "^2.0.20",
+    "ts-jest": "^29.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  }
+}

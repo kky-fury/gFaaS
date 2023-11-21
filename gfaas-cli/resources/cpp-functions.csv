@@ -1,0 +1,5 @@
+name,image,namespace,platformId,requestMemory,requestCpu,maxMemory,maxCpu,minScale,targetScale,maxScale
+gfaas-cpp,paulwie/gfaas-cpp:latest,openfaas-fn,OpenFaaS,4000M,2000m,4000M,2000m,1,1,5
+gfaas-cpp,paulwie/gfaas-cpp:latest,default,Fission,4000M,2000m,4000M,2000m,1,1,5
+gfaas-cpp,paulwie/gfaas-cpp:latest,default,Nuclio,4000M,2000m,4000M,2000m,1,1,5
+gfaas-cpp,paulwie/gfaas-cpp:latest,default,Knative,4000M,2000m,4000M,2000m,1,1,5

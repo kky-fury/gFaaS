@@ -1,0 +1,16 @@
+{
+  "name": "gfaas-function-node14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "function.js",
+  "type": "commonjs",
+  "scripts": {
+    "runFunction": "node function.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gfaas-core-node14": "^1.0.9"
+  }
+}

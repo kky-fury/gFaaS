@@ -1,0 +1,8 @@
+openfaas-python,openfaas,python,https://10.195.8.172.sslip.io:31333/function/openfaas-python.openfaas-fn
+gfaas-python,openfaas,python,https://10.195.8.172.sslip.io:31333/function/gfaas-python.openfaas-fn
+cross-python,knative,python,http://cross-python.default.10.195.9.114.sslip.io:30014
+gfaas-python,knative,python,http://gfaas-python.default.10.195.9.114.sslip.io:30014
+cross-python,fission,python,https://10.195.7.135.sslip.io:32748/cross-python
+gfaas-python,fission,python,https://10.195.7.135.sslip.io:32748/gfaas-python
+cross-python,nuclio,python,https://10.195.9.71.sslip.io:30747/cross-python
+gfaas-python,nuclio,python,https://10.195.9.71.sslip.io:30747/gfaas-python

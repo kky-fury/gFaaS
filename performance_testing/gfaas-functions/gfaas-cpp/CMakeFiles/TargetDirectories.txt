@@ -1,0 +1,3 @@
+/Users/paul/Desktop/master_thesis/xfaas-templates/xfaas-function-cpp20/CMakeFiles/xfaas_function_cpp20.dir
+/Users/paul/Desktop/master_thesis/xfaas-templates/xfaas-function-cpp20/CMakeFiles/edit_cache.dir
+/Users/paul/Desktop/master_thesis/xfaas-templates/xfaas-function-cpp20/CMakeFiles/rebuild_cache.dir

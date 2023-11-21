@@ -1,0 +1,34 @@
+name: gfaas-node-grpc
+lang: java
+image: paulwie/gfaas-node-grpc:latest
+deployRegistry: registry.hub.docker.com
+namespace: openfaas-fn
+is_grpc: true
+limits:
+    memory: 4000M
+    cpu: 2000m
+requests:
+    memory: 4000M
+    cpu: 2000m
+scale:
+    knative:
+        scaleToZeroDuration: 2m
+        min: 1
+        max: 5
+        target: 1
+    openfaas:
+        # https://docs.openfaas.com/architecture/autoscaling/
+        # To enable autoscaling, one must use the OpenFaaS pro Autoscaler (https://docs.openfaas.com/architecture/autoscaling/)
+         min: 1
+         max: 5 #Maximum 5 replicas in community edition
+    fission:
+        # https://fission.io/docs/reference/crd-reference/
+        scaleToZeroDuration: 111
+        min: 1
+        max: 5
+    nuclio:
+        # https://nuclio.io/docs/latest/reference/function-configuration/function-configuration-reference/
+        min: 1
+        max: 5
+        target: 1
+

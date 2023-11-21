@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://10.195.8.172.sslip.io:31333
+functions:
+  openfaas-java:
+    lang: java11
+    handler: ./openfaas-java
+    image: paulwie/openfaas-java:latest
+
