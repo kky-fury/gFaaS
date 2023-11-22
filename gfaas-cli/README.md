@@ -120,11 +120,11 @@ cd dist && pkg index.js
 ### Create dockered CLI
 
 ```
-docker build -t registry.hub.docker.com/<username>//gfaas-cli .
+docker build -t registry.hub.docker.com/<username>/gfaas-cli .
 ```
 
 ```
-docker push registry.hub.docker.com/<username>//gfaas-cli
+docker push registry.hub.docker.com/<username>/gfaas-cli
 ```
 #### Run CLI command in docker
 
