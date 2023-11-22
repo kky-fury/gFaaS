@@ -1,0 +1,23 @@
+all:
+  hosts:
+  children:
+    openfaas:
+      hosts:
+#        10.195.7.236:
+#        10.195.8.161:
+    nuclio:
+      hosts:
+#        10.195.8.220:
+#        10.195.8.201:
+    fission:
+      hosts:
+#        10.195.8.201:
+    knative:
+      hosts:
+#        10.195.8.161:
+
+  vars:
+    ansible_user: <username>
+    ansible_become: yes
+    ansible_become_method: sudo
+    ansible_python_interpreter: /usr/bin/env python3

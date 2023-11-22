@@ -1,0 +1,22 @@
+
+- import_playbook: kubernetes.yaml
+
+- name: Setup Fission
+  hosts: fission
+  become: false
+  become_user: ubuntu
+  tasks:
+###################################################################################
+###   Install Fission and expose Controller (API) on port 3112
+###################################################################################
+    - name: Install Fission
+      command: "{{ item }}"
+      with_items:
+      - kubectl create namespace fission
+      - kubectl create -k "github.com/fission/fission/crds/v1?ref=v1.17.0"
+      - helm repo add fission-charts https://fission.github.io/fission-charts/
+      - helm repo update
+      - helm install --version v1.17.0 --namespace fission fission fission-charts/fission-all
+      - kubectl patch svc controller -n fission --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
+      - kubectl patch svc controller -n fission --type='json' -p '[{"op":"replace","path":"/spec/ports/0/nodePort","value":31112}]'
+

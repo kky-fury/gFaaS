@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"faas_shim_cluster","Source":"./modules/cluster","Dir":"modules/cluster"},{"Key":"faas_shim_cluster.master","Source":"../compute","Dir":"modules/compute"},{"Key":"","Source":"","Dir":"."},{"Key":"faas_shim_cluster.network","Source":"../network","Dir":"modules/network"},{"Key":"faas_shim_cluster.worker","Source":"../compute","Dir":"modules/compute"}]}

@@ -1,0 +1,16 @@
+---
+# file: worker.yml
+- hosts: worker
+  become: True
+  roles:
+     - role: common
+     - role: docker
+       vars:
+          user: ubuntu
+          nvidia: "no"
+          proxy: "no"
+          kubernetes_version: 1.22.0-00
+          keadm_version: 1.6.2
+          keadm_host_os: linux-amd64
+     - role: k8s-install
+     - role: k8s-worker

@@ -1,0 +1,24 @@
+
+- import_playbook: kubernetes.yaml
+
+- name: Setup Nuclio
+  hosts: nuclio
+  become: false
+  become_user: ubuntu
+  tasks:
+###################################################################################
+###   Install Nuclio via Helm3 and expose dashboard on port 31112
+###################################################################################
+    - name: Install Nuclio
+      command: "{{ item }}"
+      with_items:
+      - kubectl create namespace nuclio
+      - kubectl --namespace nuclio create secret docker-registry registry-credentials --docker-username paulwie  --docker-password iegs&+Z937 --docker-server registry.hub.docker.com
+      - helm repo add nuclio https://nuclio.github.io/nuclio/charts
+      - helm install nuclio --set registry.secretName=registry-credentials nuclio/nuclio
+      - kubectl patch svc nuclio-dashboard --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"}]'
+      - kubectl patch svc nuclio-dashboard --type='json' -p '[{"op":"replace","path":"/spec/ports/0/nodePort","value":31112}]'
+#       - kubectl apply -f https://raw.githubusercontent.com/containous/traefik/v1.7/examples/k8s/traefik-rbac.yaml
+#       - kubectl apply -f https://raw.githubusercontent.com/containous/traefik/v1.7/examples/k8s/traefik-deployment.yaml
+#       - helm install stable/traefik --name traefik --namespace kube-system
+

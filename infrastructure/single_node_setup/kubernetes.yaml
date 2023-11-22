@@ -1,0 +1,158 @@
+- name: Setup single node kubernetes cluster
+  hosts: all
+  become: true
+  tasks:
+#################################################################################
+#   Install some required packages and docker
+#################################################################################
+    - name: Install packages that allow apt to be used over HTTPS
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg-agent
+        - software-properties-common
+
+    - name: Add an apt signing key for Docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Add apt repository for stable version
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+
+    - name: Install docker and its dependecies
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+
+    - name: Add ubuntu user to docker group
+      user:
+        name: ubuntu
+        group: docker
+
+    - name: Download and install cri-dockerd
+      command: "{{ item }}"
+      with_items:
+        - curl -sSLo cri-dockerd_0.2.3.3-0.ubuntu-focal_amd64.deb https://github.com/Mirantis/cri-dockerd/releases/download/v0.2.3/cri-dockerd_0.2.3.3-0.ubuntu-focal_amd64.deb
+        - dpkg -i cri-dockerd_0.2.3.3-0.ubuntu-focal_amd64.deb
+
+
+###################################################################################
+###   Disable swap
+###################################################################################
+    - name: Remove swapfile from /etc/fstab
+      mount:
+        name: "{{ item }}"
+        fstype: swap
+        state: absent
+      with_items:
+        - swap
+        - none
+
+    - name: Disable swap
+      command: swapoff -a
+      when: ansible_swaptotal_mb > 0
+
+###################################################################################
+###   Install kubelet, kubeadm and kubectl
+###################################################################################
+    - name: Add an apt signing key for Kubernetes
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        state: present
+
+    - name: Adding apt repository for Kubernetes
+      apt_repository:
+        repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+        state: present
+        filename: kubernetes.list
+
+    - name: Install Kubernetes binaries
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+      vars:
+        packages:
+          - kubelet
+          - kubeadm
+          - kubectl
+
+
+    - name: Restart kubelet
+      service:
+        name: kubelet
+        daemon_reload: yes
+        state: restarted
+
+###################################################################################
+###   Create the cluster using kubeadm
+###################################################################################
+    - name: Initialize the Kubernetes cluster using kubeadm
+      command: kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket=/var/run/cri-dockerd.sock
+
+###################################################################################
+###   Configure kubectl
+###################################################################################
+    - name: Setup kubeconfig for ubuntu user
+      command: "{{ item }}"
+      with_items:
+      - mkdir -p /home/ubuntu/.kube
+      - cp -i /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
+      - chown ubuntu:docker /home/ubuntu/.kube/config
+
+###################################################################################
+###   Untaint Control Plane Node to allow running pods (Single-node cluster)
+####################################################################################
+    - name: Untaint node
+      command: kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+      become: false
+      become_user: ubuntu
+
+###################################################################################
+###   Install the Helm
+###################################################################################
+    - name: Install Helm3
+      command: "{{ item }}"
+      with_items:
+        - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+        - chmod 700 get_helm.sh
+        -  ./get_helm.sh
+        - rm get_helm.sh
+
+#    - name: Install a Container Network Interface (CNI) plugin
+#      command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+#      become: false
+#      become_user: ubuntu
+#
+#    - name: Install helm
+#      command: "{{ item }}"
+#      with_items:
+#      - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+#      - chmod 700 get_helm.sh
+#      -  ./get_helm.sh
+#
+#    - name: Install Container Storage Interface (CSI) driver
+#      command: "{{ item }}"
+#      become: false
+#      become_user: ubuntu
+#      with_items:
+#      - helm repo add openebs https://openebs.github.io/charts
+#      - kubectl create namespace openebs
+#      - helm --namespace=openebs install openebs openebs/openebs
+
+

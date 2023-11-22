@@ -1,0 +1,16 @@
+---
+# file: master.yml
+- hosts: master
+  become: true
+  roles:
+     - role: common
+     - role: docker
+       vars:
+          user: paul_wieland
+          nvidia: "no"
+          proxy: "no"
+          kubernetes_version: 1.22.0-00
+          keadm_version: 1.6.2
+          keadm_host_os: linux-amd64
+     - role: k8s-install
+#     - role: k8s-master

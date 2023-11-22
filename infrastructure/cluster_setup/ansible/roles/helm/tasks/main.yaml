@@ -1,0 +1,13 @@
+###################################################################################
+###   Install Helm
+###################################################################################
+- name: Install Helm3
+  command: "{{ item }}"
+  with_items:
+    - curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    - chmod 700 get_helm.sh
+    -  ./get_helm.sh
+    - rm get_helm.sh
+
+
+  helm install nginxingress ingress-nginx/ingress-nginx --set rbac.create=true,controller.hostNetwork=true --set controller.daemonset.useHostPort=true --set dnsPolicy=ClusterFirstWithHostNet --set controller.kind=DaemonSet

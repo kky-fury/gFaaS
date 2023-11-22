@@ -1,0 +1,38 @@
+###################################################################################
+###   Create the cluster using kubeadm
+###################################################################################
+- name: Initialize the Kubernetes cluster using kubeadm
+  command: kubeadm init --pod-network-cidr=10.244.0.0/16 --cri-socket=unix:///run/containerd/containerd.sock
+
+
+###################################################################################
+###   Configure kubectl
+###################################################################################
+- name: Setup kubeconfig for ubuntu user
+  command: "{{ item }}"
+  with_items:
+    - mkdir -p /home/ubuntu/.kube
+    - cp -i /etc/kubernetes/admin.conf /home/ubuntu/.kube/config
+    - chown paul_wieland:paul_wieland /home/paul_wieland/.kube/
+    - chown paul_wieland:paul_wieland /home/paul_wieland/.kube/config
+
+- name: install Pod network
+  become: yes
+  become_user: ubuntu
+  shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+  args:
+    chdir: $HOME
+
+- name: Get the token for joining the worker nodes
+  become: yes
+  become_user: ubuntu
+  shell: kubeadm token create  --print-join-command
+  register: kubernetes_join_command
+
+- name: Print join command
+  ansible.builtin.debug:
+    msg: "{{ kubernetes_join_command.stdout }}"
+
+- name: Copy join command to local file.
+  become: no
+  local_action: copy content="{{ kubernetes_join_command.stdout_lines[0] }}" dest="./kubernetes_join_command" mode=0777

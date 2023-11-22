@@ -1,0 +1,19 @@
+- name: Copy files to host
+  become: True
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: $PWD/my_openfaas/
+
+
+- name: Install Monitoring setup
+  become_user: "{{ user }}"
+  command: "{{ item }}"
+  with_items:
+   - kubectl apply --server-side -f my_openfaas/manifests/setup
+
+- pause: seconds=20
+- name: Install Monitoring components
+  become_user: "{{ user }}"
+  command: "{{ item }}"
+  with_items:
+   - kubectl apply -f my_openfaas/manifests/
