@@ -1,0 +1,4 @@
+gfaas-cli/node_modules
+gfaas-cli/lib
+*.pem
+*.pub
