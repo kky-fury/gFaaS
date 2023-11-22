@@ -81,3 +81,6 @@ The cold start performance is only compared with Knative and Fission since scale
 
 #### Java
 <img src="./figures/java-performance.png" />
+
+### Contributors
+[Paul Wieland](https://github.com/paul-wie)
