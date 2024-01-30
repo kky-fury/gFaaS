@@ -82,5 +82,19 @@ The cold start performance is only compared with Knative and Fission since scale
 #### Java
 <img src="./figures/java-performance.png" />
 
+## Citation
+If you use gFaaS in your work, please cite our paper:
+
+```
+@misc{chadha2024gfaas,
+    title={gFaaS: Enabling Generic Functions in Serverless Computing},
+    author={Mohak Chadha and Paul Wieland and Michael Gerndt},
+    year={2024},
+    eprint={2401.10367},
+    archivePrefix={arXiv},
+    primaryClass={cs.SE}
+}
+```
+
 ### Contributors
 [Paul Wieland](https://github.com/paul-wie)
